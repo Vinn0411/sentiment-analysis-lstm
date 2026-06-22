@@ -24,8 +24,11 @@ def load_all():
 model, tokenizer = load_all()
 
 # ================= PREPROCESS =================
-nltk.download('stopwords')
-stop_words = set(stopwords.words('indonesian'))
+try:
+    stop_words = set(stopwords.words('indonesian'))
+except:
+    nltk.download('stopwords')
+    stop_words = set(stopwords.words('indonesian'))
 
 def clean_text(text):
     text = str(text).lower()
